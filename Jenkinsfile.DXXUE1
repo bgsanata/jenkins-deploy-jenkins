@@ -24,12 +24,19 @@ pipeline {
             }
         }
         stage("Deploy Jenkins"){
-
+            steps{
+            
+            }
         }
         stage("JCasC"){
-
+            steps{
+            
+            }
         }
-        stage("Test"){           
+        stage("Test"){  
+            steps{
+            
+            }
         }
     }
 }
