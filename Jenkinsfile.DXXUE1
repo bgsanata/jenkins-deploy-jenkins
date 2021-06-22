@@ -25,17 +25,17 @@ pipeline {
         }
         stage("Deploy Jenkins"){
             steps{
-            
+                echo "###################### Deploying"
             }
         }
         stage("JCasC"){
             steps{
-            
+                echo "###################### setup Jenkins"
             }
         }
         stage("Test"){  
             steps{
-            
+                echo "###################### Testing"
             }
         }
     }
