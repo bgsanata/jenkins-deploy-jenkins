@@ -7,9 +7,8 @@ pipeline {
       buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
       timeout(time: 300, unit: 'SECONDS')
     }
-    agent {
-        label 'kubectl'
-    }
+    
+    agent any
 
     stages {
         stage("Terraformation"){
