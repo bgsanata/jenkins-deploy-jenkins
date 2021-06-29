@@ -23,9 +23,9 @@ pipeline {
         stage("Helming"){
             steps{
                 echo "###################### Deploying ######################"
-                withCredentials([usernamePassword(credentialsId: 'jenkins_bind_password', usernameVariable: 'USERNAME', passwordVariable: 'BIND_PASSWORD')]) {
-                withAWS (credentials: "123") {
-                }}
+//                 withCredentials([usernamePassword(credentialsId: 'jenkins_bind_password', usernameVariable: 'USERNAME', passwordVariable: 'BIND_PASSWORD')]) {
+//                 withAWS (credentials: "123") {
+//                 }}
             }
         }
 
