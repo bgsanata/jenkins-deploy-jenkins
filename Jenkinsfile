@@ -1,6 +1,3 @@
-def appCode = "JEN"
-def roleCode = "JENK"
-
 pipeline {
     options {
       disableConcurrentBuilds()
@@ -11,31 +8,44 @@ pipeline {
     agent any
 
     stages {
+
         stage("Terraformation"){
             agent { label '' }
-            when { not { branch 'master' } }
+            when { branch 'main' } 
             steps{
                 script{
-                    echo "###################### AWS EFS infra with Terraform"
-                    deployingEnv = "Dev"
-  
+                    echo "###################### AWS EFS infra with Terraform ######################"
+                    deployingEnv = "DEV"
                 }
             }
         }
-        stage("Deploy Jenkins"){
+
+        stage("Helming"){
             steps{
-                echo "###################### Deploying"
+                echo "###################### Deploying ######################"
+                withCredentials([usernamePassword(credentialsId: 'jenkins_bind_password', usernameVariable: 'USERNAME', passwordVariable: 'BIND_PASSWORD')]) {
+                withAWS (credentials: "123") {
+                }}
             }
         }
+
         stage("JCasC"){
             steps{
-                echo "###################### setup Jenkins"
+                echo "###################### setup Jenkins ######################"
             }
         }
+
         stage("Test"){  
             steps{
-                echo "###################### Testing"
+                echo "###################### Testing ######################"
             }
         }
     }
+
+    post {
+        always {
+            cleanWs()
+            }
+        }
+
 }
